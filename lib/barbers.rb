@@ -24,4 +24,25 @@ class Barber
     define_method(:==) do |other_barber|
       self.name().==(other_barber.name()).&(self.id().==(other_barber.id()))
     end
+
+    define_singleton_method(:find) do |id|
+      found_barber = nil
+      Barber.all().each() do |barber|
+        if barber.id().==(id)
+          found_barber = barber
+        end
+      end
+      found_barber
+    end
+
+    define_method(:clients) do
+      list_clients = []
+      clients = DB.exec("SELECT * FROM clients WHERE barbers_id = #{self.id()};")
+      clients.each() do |client|
+        name = client.fetch("name")
+        barbers_id = client.fetch("barbers_id").to_i()
+        list_clients.push(Client.new({:name => name, :barbers_id => barbers_id}))
+      end
+      list_clients
+    end
 end

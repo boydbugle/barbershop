@@ -1,0 +1,17 @@
+
+  <% if @barber.clients().any?() %>
+    <h3>Here are all the clients in this barber:</h3>
+
+    <ul>
+      <% @barber.clients().each() do |client| %>
+        <li><%= client.name() %> </li>
+      <% end %>
+    </ul>
+
+    <% else %>
+      <p>There are no clients on this barber!</p>
+    <% end %>
+
+  <div class="container">
+    <a href="/"><button class="btn">Home</a>
+  </div>

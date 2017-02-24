@@ -38,4 +38,26 @@ require("spec_helper")
         expect(barber1).to(eq(barber2))
       end
     end
+
+     describe(".find") do
+      it("returns a barber by his ID") do
+        test_barber = Barber.new({:name => "Kunyoa upara", :id => nil})
+        test_barber.save()
+        test_barber2 = Barber.new({:name => "This manenos", :id => nil})
+        test_barber2.save()
+        expect(Barber.find(test_barber2.id())).to(eq(test_barber2))
+      end
+    end
+
+    describe("#clients") do
+      it("returns an array of clients for that barber") do
+        test_barber = Barber.new({:name => "Epicodus stuff", :id => nil})
+        test_barber.save()
+        test_client = Client.new({:name => "Learn SQL", :barbers_id => test_barber.id()})
+        test_client.save()
+        test_client2 = Client.new({:name => "Review Ruby", :barbers_id => test_barber.id()})
+        test_client2.save()
+        expect(test_barber.clients()).to(eq([test_client, test_client2]))
+      end
+    end
   end

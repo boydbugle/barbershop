@@ -1,0 +1,16 @@
+<h1>Meet Current barbers:</h1>
+
+  <% if @barbers.any?() %>
+    <h3>Here are your barbers:</h3>
+
+    <ul>
+      <% @barbers.each() do |barber| %>
+        <li><a href="/barbers/<%= barber.id()%>"><%= barber.name() %></a> </li>
+      <% end %>
+    </ul>
+
+  <% else %>
+
+      <p>There are no barbers yet!</p>
+
+  <% end %>
