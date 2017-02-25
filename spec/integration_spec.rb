@@ -6,8 +6,8 @@ require('capybara/rspec')
   describe('adding a new barber', {:type => :feature}) do
     it('allows a user to click a link to add barbers to listed') do
       visit('/')
-      click_link('Add New barber')
-      fill_in('name', :with =>'Goodie Goody')
+      # click_link('Add Barber')
+      fill_in('det', :with =>'Goodie Goody')
       click_button('Add barber')
       expect(page).to have_content('Success!')
     end
@@ -35,14 +35,14 @@ require('capybara/rspec')
     end
   end
 
-# describe('adding clients to a barber', {:type => :feature}) do
-#     it('allows a user to add a task to a list') do
-#       test_barber = Barber.new({:name => 'new guy'})
-#       test_barber.save()
-#       visit("/barbers/#{test_barber.id()}")
-#       fill_in("name", {:with => "end of coding leo"})
-#       click_button("Add task")
-#       expect(page).to have_content("Success")
-#     end
-#   end
+describe('adding clients to a barber', {:type => :feature}) do
+    it('allows a user to add a client to a specific barber') do
+      test_barber = Barber.new({:name => 'new guy'})
+      test_barber.save()
+      visit("/barbers/#{test_barber.id()}")
+      fill_in("name", {:with => "end of coding leo"})
+      click_button("Add client")
+      expect(page).to have_content("Success")
+    end
+  end
   

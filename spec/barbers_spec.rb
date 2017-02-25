@@ -60,4 +60,36 @@ require("spec_helper")
         expect(test_barber.clients()).to(eq([test_client, test_client2]))
       end
     end
-  end
+
+    describe("#update") do
+      it("lets you update barbers in the database") do
+        barber = Barber.new({:name => "yule msee", :id => nil})
+        barber.save()
+        barber.update({:name => "mambo mbaya"})
+        expect(barber.name()).to(eq("mambo mbaya"))
+      end
+    end
+    
+
+    describe("#delete") do
+      it("lets you delete a barber from the database") do
+        barber = Barber.new({:name => "Punk morio", :id => nil})
+        barber.save()
+        barber2 = Barber.new({:name => "Jordan koloski", :id => nil})
+        barber2.save()
+        barber.delete()
+        expect(Barber.all()).to(eq([barber2]))
+      end
+      
+    it("deletes a barber's clients from the database") do
+        barber = Barber.new({:name => "Punk morio", :id => nil})
+        barber.save()
+        client = Client.new({:name => "learn SQL", :barbers_id => barber.id()})
+        client.save()
+        client2 = Client.new({:name => "Review Ruby", :barbers_id => barber.id()})
+        client2.save()
+        barber.delete()
+        expect(Client.all()).to(eq([]))
+      end
+    end
+    end

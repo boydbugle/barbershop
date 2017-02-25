@@ -45,4 +45,16 @@ class Barber
       end
       list_clients
     end
+
+    define_method(:update) do |attributes|
+      @name = attributes.fetch(:name)
+      @id = self.id()
+      DB.exec("UPDATE barbers SET name = '#{@name}' WHERE id = #{self.id()};")
+    end
+    
+
+    define_method(:delete) do
+      DB.exec("DELETE FROM barbers WHERE id = #{self.id()};")
+      DB.exec("DELETE FROM clients WHERE barbers_id = #{self.id()};")
+  end
 end

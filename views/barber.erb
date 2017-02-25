@@ -1,4 +1,18 @@
 
+<h3>Add a task to <%= @barber.name() %> </h3>
+
+  <form action="/clients" method="post">
+    <input id="barbers_id" name="barbers_id" type="hidden" value="<%= @barber.id() %>">
+
+    <label for="name">Name of the client:</label>
+    <input id="name" name="name" type="text">
+
+    <button type="submit">Add client</button>
+  </form>
+
+  <hr>
+
+
   <% if @barber.clients().any?() %>
     <h3>Here are all the clients in this barber:</h3>
 
@@ -13,5 +27,11 @@
     <% end %>
 
   <div class="container">
-    <a href="/"><button class="btn">Home</a>
+    <a href="/">Home</a>
+    <a href="/barbers">View All barbers</a>
+    <a href="/barber/new">Add New barber</a>
+    <p><a href="/barbers/<%= @barber.id() %>/edit">Edit <%= @barber.name() %> barber</a></p>
+    <%#<a href="/lists/new">Add New client</a>%>
   </div>
+
+  
