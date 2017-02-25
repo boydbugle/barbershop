@@ -1,8 +1,8 @@
 
-<h3>Add a task to <%= @barber.name() %> </h3>
+<h3>Add a client to <%= @barber.name() %> </h3>
 
   <form action="/clients" method="post">
-    <input id="barbers_id" name="barbers_id" type="hidden" value="<%= @barber.id() %>">
+    <input id="barbers_id" name="barber_id" type="hidden" value="<%= @barber.id() %>">
 
     <label for="name">Name of the client:</label>
     <input id="name" name="name" type="text">
@@ -14,7 +14,7 @@
 
 
   <% if @barber.clients().any?() %>
-    <h3>Here are all the clients in this barber:</h3>
+    <h3>Here are all the clients for barber:<%= @barber.name() %> </h3>
 
     <ul>
       <% @barber.clients().each() do |client| %>

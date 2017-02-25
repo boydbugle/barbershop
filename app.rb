@@ -36,7 +36,7 @@ require("sinatra")
   
   post("/clients") do
     name = params.fetch("name")
-    barbers_id = params.fetch("barbers_id").to_i()
+    barbers_id = params.fetch("barber_id").to_i()
     @barber = Barber.find(barbers_id)
     @client = Client.new({:name => name, :barbers_id => barbers_id})
     @client.save()
@@ -45,7 +45,7 @@ require("sinatra")
 
   get("/barbers/:id/edit") do
     @barber = Barber.find(params.fetch("id").to_i())
-    erb(:barber_edit)
+    erb(:barbers_edit)
   end
 
   patch("/barbers/:id") do
