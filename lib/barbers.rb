@@ -41,7 +41,9 @@ class Barber
       clients.each() do |client|
         name = client.fetch("name")
         barbers_id = client.fetch("barbers_id").to_i()
-        list_clients.push(Client.new({:name => name, :barbers_id => barbers_id}))
+        cut_description = client.fetch("cut_description")
+        booking_date = client.fetch("booking_date")
+        list_clients.push(Client.new({:name => name, :barbers_id => barbers_id, :cut_description => cut_description, :booking_date => booking_date}))
       end
       list_clients
     end

@@ -7,6 +7,12 @@
     <label for="name">Name of the client:</label>
     <input id="name" name="name" type="text">
 
+    <label for="cut_description">cut description:</label>
+    <input id="cut_description" name="cut_description" type="text">
+
+    <label for="booking_date">Assign date:</label>
+    <input id="booking_date" name="booking_date" type="text">
+
     <button type="submit">Add client</button>
   </form>
 
@@ -18,7 +24,7 @@
 
     <ul>
       <% @barber.clients().each() do |client| %>
-        <li><%= client.name() %> </li>
+        <li><%= client.name() %>,<%= client.cut_description() %>,<%= client.booking_date() %> </li>
       <% end %>
     </ul>
 

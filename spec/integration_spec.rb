@@ -27,7 +27,7 @@ require('capybara/rspec')
     it('allows a user to click a barber to see the clients and details on him') do
       test_barber = Barber.new({:name => 'Yule Msee'})
       test_barber.save()
-      test_client = Client.new({:name => "John doe", :barbers_id => test_barber.id()})
+      test_client = Client.new({:name => "John doe", :barbers_id => test_barber.id(), :cut_description => "box cut with  comb and scissors", :booking_date => "02/08/2017"})
       test_client.save()
       visit('/barbers')
       click_link(test_barber.name())
