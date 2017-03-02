@@ -1,25 +1,5 @@
-
-<h3>Add a client to <%= @barber.name() %> </h3>
-
-  <form action="/clients" method="post">
-    <input id="barbers_id" name="barber_id" type="hidden" value="<%= @barber.id() %>">
-
-    <label for="name">Name of the client:</label>
-    <input id="name" name="name" type="text">
-
-    <label for="cut_description">cut description:</label>
-    <input id="cut_description" name="cut_description" type="text">
-
-    <label for="booking_date">Assign date:</label>
-    <input id="booking_date" name="booking_date" type="text">
-
-    <button type="submit">Add client</button>
-  </form>
-
-  <hr>
-
-
-  <% if @barber.clients().any?() %>
+ 
+ <% if @barber.clients().any?() %>
     <h3>Here are all the clients for barber:<%= @barber.name() %> </h3>
 
     <ul>
@@ -29,15 +9,13 @@
     </ul>
 
     <% else %>
-      <p>There are no clients on this barber!</p>
+      <h3><strong><%= @barber.name() %>:</strong></h3>
+      <p>There are no clients for me!</p>
     <% end %>
 
   <div class="container">
     <a href="/">Home</a>
     <a href="/barbers">View All barbers</a>
-    <a href="/barber/new">Add New barber</a>
-    <p><a href="/barbers/<%= @barber.id() %>/edit">Edit <%= @barber.name() %> barber</a></p>
-    <%#<a href="/lists/new">Add New client</a>%>
   </div>
 
   

@@ -1,0 +1,52 @@
+<h2>Administration</h2>
+<p><strong>Create a new barber:</strong></p>
+<div class="form">
+
+  <form action="/barbers" method="post" id="barber">
+    <label for="det">Name Barber:</label>
+    <input id="det" name="det" type="text">
+
+    <button type="submit">Add barber</button>
+  </form>
+  </div>
+<br>
+  <p><strong> Add client to any barber:</strong></p>
+ 
+<div class="form1">
+
+  <form action="/clients" method="post" id="clients">
+     <label for="barber_id">Select a barber</label>
+    <select id='barber_id' name='barber_id' type='text'>
+      <% @barbers.each() do |barber| %>
+        <option value="<%= barber.id()%>"> <%= barber.name() %> </option>
+      <% end %>
+    </select>
+
+    <label for="name">Name of the client:</label>
+    <input id="name" name="name" type="text">
+
+    <label for="cut_description">cut description:</label>
+    <input id="cut_description" name="cut_description" type="text">
+    
+    <label for="booking_date">Assign date:</label>
+    <input id="booking_date" name="booking_date" type="text">
+
+    <button type="submit">Add client</button>
+  </form>
+</div>
+    
+<% if @barbers.any?() %>
+  <p>Click on a barber to edit or delete:</p>
+
+  <ul>
+    <% @barbers.each do |barber| %>
+    <li><a href="/admin/barbers/<%= barber.id() %>/edit"><%= barber.name() %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are no barbers yet!</p>
+  <% end %>
+  
+  <div class="container">
+    <a href="/barbers">View All barbers</a>
+  </div>

@@ -13,6 +13,11 @@ require("sinatra")
     erb(:index)
   end
 
+  get('/admin')do
+  @barbers = Barber.all()
+    erb(:admin)
+  end
+
   # get("/barber/new") do
   #   erb(:newbarber_form)
   # end
@@ -45,7 +50,7 @@ require("sinatra")
     erb(:success)
   end
 
-  get("/barbers/:id/edit") do
+  get("/admin/barbers/:id/edit") do
     @barber = Barber.find(params.fetch("id").to_i())
     erb(:barbers_edit)
   end

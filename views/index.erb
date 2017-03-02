@@ -1,40 +1,6 @@
-<h1>Welcome To The Neighbourhood BarBershop</h1>
-
 <h1> BARBER SHOP!! </h1>
 
-  <p>Create a new barber:</p>
-
-  <form action="/barbers" method="post">
-    <label for="det">Name of new Barber:</label>
-    <input id="det" name="det" type="text">
-
-    <button type="submit">Add barber</button>
-  </form>
-
-  <p> Add client to any barber:</p>
-
-  <form action="/clients" method="post">
-     <label for="barber_id">Select a barber</label>
-    <select id='barber_id' name='barber_id' type='text'>
-      <% @barbers.each() do |barber| %>
-        <option value="<%= barber.id()%>"> <%= barber.name() %> </option>
-      <% end %>
-    </select>
-
-    <label for="name">Name of the client:</label>
-    <input id="name" name="name" type="text">
-
-    <label for="cut_description">cut description:</label>
-    <input id="cut_description" name="cut_description" type="text">
-    
-    <label for="booking_date">Assign date:</label>
-    <input id="booking_date" name="booking_date" type="text">
-
-    <button type="submit">Add client</button>
-  </form>
-
-    <%#<p>Date: <input type="text" id="datepicker"></p>%>
-
+<h3>Welcome To The Neighbourhood BarBershop</h3>
 
   <% if @barbers.any?() %>
   <p>Click on a barber to see their clients:</p>
@@ -50,6 +16,5 @@
   
   <div class="container">
     <a href="/barbers">View All barbers</a>
-    <%#<a href="/barber/new">Add New barber</a>%>
   </div>
   
