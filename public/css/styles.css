@@ -1,46 +1,24 @@
 body{
     font-family:Jamrul;
     margin: 0;
+    padding-top: 100px; 
 }
 
 
- #nav {
-    list-style-type: none;
-    margin-top: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+div.holder{
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
 }
-
-#nav li {
-    float: left;
-    border-right:1px solid #bbb;
+.col-md-6 img{
+    height: auto; 
+    width: 100%; 
+    /*max-height: 300px;*/
+    float:right;
 }
-
-#nav li:last-child {
-    border-right: none;
+.yield{
+    text-align:left;
 }
-
-#nav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-#nav li a:hover:not(.active) {
-    background-color: #111;
-}
-
-.active {
-    background-color: #4CAF50;
-}
-
-.img{
-    padding-left: 90px;
-}
-
 #clients input[type=text], select {
     width: 100%;
     padding: 12px 20px;
